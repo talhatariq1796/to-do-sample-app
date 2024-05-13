@@ -25,10 +25,12 @@ Clone this repository to your local machine.
 
 Install dependencies by running the following command:
 
-npm install
+- npm install
+
 Start the development server by running:
 
-npm run dev
+- npm run dev
+
 Open your browser and navigate to http://localhost:3000 to view the application.
 
 ### Application Structure
@@ -63,10 +65,10 @@ Redux is used for state management in the Todo List application. The state inclu
 
 The application utilizes the following dependencies:
 
-1. react: A JavaScript library for building user interfaces.
-2. redux: A predictable state container for JavaScript apps.
-3. react-redux: Official React bindings for Redux, enabling seamless integration of Redux with React components.
-
+1. react
+2. redux
+3. react-redux: Official React bindings for Redux
+   
 ### Contributing
 
 Contributions to the Todo List application are welcome! If you have any suggestions for improvements or would like to report a bug, please open an issue or submit a pull request.
