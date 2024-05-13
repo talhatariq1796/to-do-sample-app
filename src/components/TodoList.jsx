@@ -11,6 +11,8 @@ import { MdDeleteOutline } from "react-icons/md";
 import { IoMdArrowDropright, IoMdClose } from "react-icons/io";
 import { MdArrowDropUp } from "react-icons/md";
 import { TiTick } from "react-icons/ti";
+import { Checkbox } from "pretty-checkbox-react";
+import "@djthoms/pretty-checkbox";
 
 const TodoList = ({
   todos,
@@ -136,19 +138,17 @@ const TodoList = ({
                 </div>
 
                 <div className="flex items-center gap-2">
-                  {!todo.completed ? (
-                    <TiTick
-                      className="cursor-pointer text-[#35A07A]"
-                      fontSize={25}
-                      onClick={() => toggleTodo(todo.id)}
-                    />
-                  ) : (
-                    <IoMdClose
-                      className="cursor-pointer text-red-700"
-                      fontSize={25}
-                      onClick={() => toggleTodo(todo.id)}
-                    />
-                  )}
+                  <Checkbox
+                    animation="jelly"
+                    color="success"
+                    icon={
+                      <TiTick
+                        className="cursor-pointer text-[#35A07A]"
+                        fontSize={25}
+                      />
+                    }
+                    onClick={() => toggleTodo(todo.id)}
+                  ></Checkbox>
 
                   {!todo.completed && (
                     <CiEdit
