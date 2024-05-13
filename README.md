@@ -40,10 +40,13 @@ The application consists of the following components:
 3. # reducers.js:
 
    a. In the ADD_TODO case of the todoReducer function, a new todo item is created with an incremented id using the idCounter in the initial state. This new todo is then added to the todos array in the state, ensuring that it appears at the top of the list.
+
    b. In the TOGGLE_TODO case, the todoReducer toggles the completion status of a todo item based on the id provided in the action payload. It maps through the todos array in the state and updates the completed status of the todo with the matching id. The completed property is toggled from true to false or vice versa, depending on its current value.
 
 4. # actions.js
+
    a. The addTodo function takes title and description as parameters and constructs an action object with these values in the payload. This action is dispatched when a new todo is added to the list.
+
    b. The toggleTodo function takes the id of the todo to be toggled as a parameter and constructs an action object with the id in the payload. This action is dispatched when a todo's completion status is toggled.
 
 ### Redux Integration
