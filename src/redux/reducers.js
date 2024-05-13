@@ -3,7 +3,7 @@ import {
   TOGGLE_TODO,
   REMOVE_TODO,
   EDIT_TODO,
-  TOGGLE_DESCRIPTION, // Import the new action type
+  TOGGLE_DESCRIPTION,
 } from "./actions";
 
 const initialState = {
