@@ -29,21 +29,21 @@ Open your browser and navigate to http://localhost:3000 to view the application.
 
 The application consists of the following components:
 
-1. # TodoForm:
+1. #### TodoForm:
 
    This component allows users to add new tasks to the todo list. It includes input fields for title and description, and a submit button to add the task.
 
-2. # TodoList:
+2. #### TodoList:
 
    This component displays the list of tasks. Each task is represented as a card with a title, description, and a checkbox to mark it as completed. Completed tasks are visually distinguished with a line-through style.
 
-3. # reducers.js:
+3. #### reducers.js:
 
    a. In the ADD_TODO case of the todoReducer function, a new todo item is created with an incremented id using the idCounter in the initial state. This new todo is then added to the todos array in the state, ensuring that it appears at the top of the list.
 
    b. In the TOGGLE_TODO case, the todoReducer toggles the completion status of a todo item based on the id provided in the action payload. It maps through the todos array in the state and updates the completed status of the todo with the matching id. The completed property is toggled from true to false or vice versa, depending on its current value.
 
-4. # actions.js
+4. #### actions.js
 
    a. The addTodo function takes title and description as parameters and constructs an action object with these values in the payload. This action is dispatched when a new todo is added to the list.
 
