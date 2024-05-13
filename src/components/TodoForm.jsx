@@ -16,35 +16,31 @@ const TodoForm = ({ addTodo }) => {
   };
 
   return (
-    <div className=" flex-1 h-full flex items-center justify-center flex-col">
-      <h1 className=" fixed top-4 left-4 font-bold text-[40px]">
-        Todo List With Redux{" "}
-      </h1>
-      <h2 className="text-[32px]">Add New Task</h2>
-      <form
-        onSubmit={handleSubmit}
-        className="flex flex-col gap-5 p-10 w-[80%] bg-gradient-to-r from-zinc-200 to-slate-500 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100"
-      >
+    <div className="flex-1 h-full flex flex-col p-10">
+      <h2 className="text-[20px] mb-3 font-[600]">Add New Task</h2>
+      <form onSubmit={handleSubmit} className="flex flex-col gap-5">
         <input
           type="text"
           placeholder="Title"
           required
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="bg-gray-50 border outline-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="w-full h-[60px] rounded-[10px] px-4 bg-transparent border outline-none border-gray-300 text-black hover:border-[#9E78CF] focus:border-[#9E78CF]"
         />
         <textarea
           placeholder="Description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          className="bg-gray-50 border resize-none outline-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="w-full h-[300px] rounded-[10px] px-4  resize-none py-4 bg-transparent border outline-none border-gray-300 text-black hover:border-[#9E78CF] focus:border-[#9E78CF]"
         ></textarea>
-        <button
-          type="submit"
-          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        >
-          Add +
-        </button>
+        <div className="flex justify-end">
+          <button
+            type="submit"
+            className="text-white bg-[#9E78CF] rounded-full outline-none font-medium text-sm w-auto px-5 py-2.5 text-center"
+          >
+            Save
+          </button>
+        </div>
       </form>
     </div>
   );

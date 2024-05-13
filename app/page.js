@@ -9,9 +9,16 @@ const store = createStore(todoReducer);
 export default function Home() {
   return (
     <Provider store={store}>
-      <div className="flex h-full w-full">
-        <TodoForm />
-        <TodoList />
+      <div className="w-full h-screen">
+        <div className="w-full h-[10vh] bg-[#F6EFFF] border-b border-b-[#9E78CF] flex items-center px-6">
+          <h1 className="text-[#222222] text-[24px] font-[700]">
+            Welcome back, <span className="text-[#9E78CF]">Talha</span> 👋
+          </h1>
+        </div>
+        <div className="flex w-full h-[90vh]">
+          <TodoForm />
+          <TodoList />
+        </div>
       </div>
     </Provider>
   );

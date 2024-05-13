@@ -47,6 +47,8 @@ const TodoList = ({
     setEditedDescription(previousTask.description);
     setPreviousTask(null);
   };
+  const notCompletedTasks = todos.filter((todo) => todo.completed).length;
+  const completedTasks = todos.length - notCompletedTasks;
   const renderTodos = () => {
     const incompleteTodos = [];
     const completeTodos = [];
@@ -63,95 +65,113 @@ const TodoList = ({
 
     const sortedTodos = incompleteTodos.concat(completeTodos);
 
-    return sortedTodos.map((todo) => (
-      <div
-        key={todo.id}
-        className="flex flex-col w-full  relative p-6  bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
-      >
-        {editedTask && editedTask.id === todo.id ? (
-          <form onSubmit={handleEditSubmit} className="w-full">
-            <input
-              type="text"
-              value={editedTitle}
-              onChange={(e) => setEditedTitle(e.target.value)}
-              className="bg-gray-50 mb-5 border outline-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            />
-            <textarea
-              value={editedDescription}
-              onChange={(e) => setEditedDescription(e.target.value)}
-              className="bg-gray-50 border mb-5 resize-none outline-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            ></textarea>
-            <button
-              type="submit"
-              className="bg-blue-500 text-white px-4 py-2 rounded-lg"
-            >
-              Save
-            </button>
-            <button
-              type="button"
-              onClick={handleCancelEdit}
-              className="bg-gray-500 ml-5 text-white px-4 py-2 rounded-lg"
-            >
-              Cancel
-            </button>
-          </form>
-        ) : (
-          <>
-            <h5
-              style={{
-                textDecoration: todo.completed ? "line-through" : "none",
-              }}
-              className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-            >
-              {todo.title}
-            </h5>
-
-            {todo.showDescription && (
-              <p className="font-normal text-gray-700 dark:text-gray-400">
-                {todo.description}
-              </p>
-            )}
-            <button
-              className="absolute bottom-3 right-3 text-gray-600"
-              onClick={() => handleToggleDescription(todo.id)}
-            >
-              {todo.showDescription ? (
-                <MdArrowDropUp />
-              ) : (
-                <IoMdArrowDropright />
-              )}
-            </button>
-            <div className="absolute top-3 right-1 flex items-center gap-2">
-              <input
-                type="checkbox"
-                className="w-[20px] h-[15px] bg-black outline-none cursor-pointer"
-                onClick={() => toggleTodo(todo.id)}
-                checked={todo.completed}
-              />
-              {!todo.completed && (
-                <CiEdit
-                  color=""
-                  onClick={() => handleEditClick(todo)}
-                  size={20}
-                  className="cursor-pointer"
+    return (
+      <>
+        {sortedTodos.map((todo) => (
+          <div
+            key={todo.id}
+            className="flex flex-col w-full  relative p-6  bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+          >
+            {editedTask && editedTask.id === todo.id ? (
+              <form onSubmit={handleEditSubmit} className="w-full">
+                <input
+                  type="text"
+                  value={editedTitle}
+                  onChange={(e) => setEditedTitle(e.target.value)}
+                  className="bg-gray-50 mb-5 border outline-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 />
-              )}
-              <MdDeleteOutline
-                color="red"
-                onClick={() => removeTodo(todo.id)}
-                size={20}
-                className="cursor-pointer"
-              />
-            </div>
-          </>
+                <textarea
+                  value={editedDescription}
+                  onChange={(e) => setEditedDescription(e.target.value)}
+                  className="bg-gray-50 border mb-5 resize-none outline-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                ></textarea>
+                <button
+                  type="submit"
+                  className="bg-blue-500 text-white px-4 py-2 rounded-lg"
+                >
+                  Save
+                </button>
+                <button
+                  type="button"
+                  onClick={handleCancelEdit}
+                  className="bg-gray-500 ml-5 text-white px-4 py-2 rounded-lg"
+                >
+                  Cancel
+                </button>
+              </form>
+            ) : (
+              <>
+                <h5
+                  style={{
+                    textDecoration: todo.completed ? "line-through" : "none",
+                  }}
+                  className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+                >
+                  {todo.title}
+                </h5>
+
+                {todo.showDescription && (
+                  <p className="font-normal text-gray-700 dark:text-gray-400">
+                    {todo.description}
+                  </p>
+                )}
+                <button
+                  className="absolute bottom-3 right-3 text-gray-600"
+                  onClick={() => handleToggleDescription(todo.id)}
+                >
+                  {todo.showDescription ? (
+                    <MdArrowDropUp fontSize={25} />
+                  ) : (
+                    <IoMdArrowDropright fontSize={25} />
+                  )}
+                </button>
+                <div className="absolute top-3 right-1 flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    className="w-[20px] h-[15px] bg-black outline-none cursor-pointer"
+                    onClick={() => toggleTodo(todo.id)}
+                    checked={todo.completed}
+                  />
+                  {!todo.completed && (
+                    <CiEdit
+                      color=""
+                      onClick={() => handleEditClick(todo)}
+                      size={20}
+                      className="cursor-pointer"
+                    />
+                  )}
+                  <MdDeleteOutline
+                    color="red"
+                    onClick={() => removeTodo(todo.id)}
+                    size={20}
+                    className="cursor-pointer"
+                  />
+                </div>
+              </>
+            )}
+          </div>
+        ))}
+        {sortedTodos?.length === 0 && (
+          <div className="w-full h-[100px] flex justify-center items-center">
+            Your todo list is empty
+          </div>
         )}
-      </div>
-    ));
+      </>
+    );
   };
   return (
-    <div className="flex-1 p-10 w-full h-full overflow-y-scroll">
-      <h2 className="text-center text-[32px]">TODO List</h2>
-      <ul className="flex flex-col gap-5 mt-10 w-full">{renderTodos()}</ul>
+    <div className="flex-1 p-10 w-full h-full">
+      <div className="bg-[#F8F2FF] rounded-[20px] p-6 h-full overflow-y-auto">
+        <div className="flex justify-between items-center">
+          <h1 className="text-center text-[16px] font-[400] text-[#272626]">
+            Tasks to Do - {completedTasks}
+          </h1>
+          <h1 className="text-center text-[16px] font-[400] text-[#272626]">
+            Done - {notCompletedTasks}
+          </h1>
+        </div>
+        <ul className="flex flex-col gap-5 mt-5 w-full">{renderTodos()}</ul>
+      </div>
     </div>
   );
 };
