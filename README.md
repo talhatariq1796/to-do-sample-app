@@ -11,6 +11,12 @@ This Todo List application is built using React and Redux. It allows users to ma
 1. Toggle Task Completion: Users can mark tasks as completed or incomplete by clicking on a checkbox next to each task.
 2. Task Ordering: Completed tasks are moved to the bottom of the list, while incomplete tasks remain at the top, maintaining their original order within each group.
 
+3. Task Editing: Added the functionality so that user can edit the uncompleted tasks and provided the Editing form.
+
+4. Task Removing: Completed and tasks that are not completed can be removed.
+
+5. Toggle Description: hidden by default then user can toggler.
+
 ## Getting Started
 
 # To run the Todo List application locally:
